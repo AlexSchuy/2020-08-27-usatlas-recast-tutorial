@@ -4,7 +4,7 @@ title: "Main Page"
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-Welcome to the US ATLAS/First-HEP computing bootcamp's tutorial on ATLAS analysis preservation with RECAST! Now that you've seen how docker can reproducibly provide the exact computing environment you want and start up customized applications at a moment's notice, we're going to look at an application of docker being used in ATLAS called RECAST. RECAST combines docker and gitlab to fully preserve your ATLAS search analysis so that it can be trivially re-interpreted with a new signal model.
+Welcome to the US ATLAS computing bootcamp's 2020 tutorial on ATLAS analysis preservation and reinterpretation with RECAST! Now that you've seen how docker can reproducibly provide the exact computing environment you want and start up customized applications at a moment's notice, we're going to look at an application of docker being used in ATLAS called RECAST. We'll start with reinterpretations of existing analyses using recast-atlas and recast-cli, and then at the end we'll see how you can use docker and gitlab to preserve your own ATLAS analysis.
 
 <!-- this is an html comment -->
 
@@ -12,9 +12,7 @@ Welcome to the US ATLAS/First-HEP computing bootcamp's tutorial on ATLAS analysi
 
 > ## Prerequisites
 >
-> * A personal repo containing a working version of your VHbb analysis code and gitlab-ci files from [the ATLAS CI/CD tutorial](https://kratsg.github.io/2019-08-19-usatlas-computing-bootcamp/).
->   If you have fallen a bit behind on this, don't worry, as a tutor and we will help you come up to speed lickety split.
-> * Knowledge gained from the bootcamp so far, especially this morning's docker tutorial!
+> * Knowledge gained from the bootcamp so far, especially the docker tutorial!
 {: .prereq}
 
 {% include links.md %}
