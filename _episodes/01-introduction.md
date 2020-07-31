@@ -3,21 +3,28 @@ title: "Introduction"
 teaching: 20
 exercises: 0
 questions:
-- "What is RECAST and how can it help me make the most of my analysis?"
-- "How do docker and gitlab work together to preserve your analysis code and operating environment?"
+- "What is RECAST and why is it useful?"
 - "What is needed to fully automate and preserve the analysis workflow?"
 objectives:
-- "Understand the motivation for incorporating RECAST into your analysis"
-- "Familiarize yourself with the three key components of RECAST"
+- "Find out where we're headed with this tutorial"
+- "Understand the motivation for incorporating RECAST into analyses"
 keypoints:
-- "RECAST preserves your analysis code and operating environment so it can be re-interpreted with new physical models."
-- "Gitlab enables full preservation of your analysis code."
-- "Docker makes it possible to preserve the exact environment in which your analysis code is run."
-- "Your analysis workflow definition automates the process of passing an arbitrary signal model through your containerized analysis chain."
+- "RECAST preserves analysis code and operating environment so it can be re-interpreted with new physical models."
+- "There are two command-line RECAST tools: `recast-atlas` and `recast-cli`."
+- "recast-atlas utilizes full atlas simulation and can be used for the best reinterpretation accuracy."
+- "recast-cli utilizes fast simulation tools and can be used to get a quick reinterpretation result to guide future efforts."
 ---
 
 ## Introduction
-This morning's docker tutorial introduced you to containerization as an industry-standard computing tool that makes it quick and easy to bring up a customized computing environment to suit the needs of your application. In this tutorial, we'll explore how ATLAS is leveraging the power of containerization for data analysis applications. You've already seen that standard ATLAS computing tools can be packaged into the `atlas/analysisbase` docker image, which lets you develop an analysis on your local machine. Now we'll see how ATLAS is using docker and gitlab to preserve and re-interpret ATLAS analyses using a tool called RECAST (Request Efficiency Computation for Alternative Signal Theories).
+The docker tutorial introduced you to containerization as an industry-standard computing tool that makes it quick and easy to use a customized computing environment that suits the needs of your application. In this tutorial, we'll explore how ATLAS is leveraging the power of containerization for data analysis applications. You've already seen that standard ATLAS computing tools can be packaged into the `atlas/analysisbase` docker image, which lets you develop an analysis on your local machine. Now we'll see how ATLAS is using docker and CI/CD to preserve and re-interpret ATLAS analyses using a tool called RECAST (Request Efficiency Computation for Alternative Signal Theories).
+
+We'll start with two command-line tools for reinterpretation: `recast-atlas` and `recast-cli`. 
+
+With `recast-atlas`, we'll see how to calculate CLs upper limits for a new signal model on lxplus by using an existing analysis and ATLAS full simulation. For our signal model, we'll use MonoSbb (dark Higgs boson decaying to two b-quarks) and for our existing analysis, we'll use MonoHbb. As it would take too long to run a full signal grid and get a complete contour, we'll only consider a single signal point. 
+
+`recast-cli` is similar to `recast-atlas`, except it uses fast simulation tools (e.g., rivet) -- no geant4 detector simulation. Since this is significantly faster (it's in the name, after all), we'll calculate a full contour. For our signal model, we'll use (insert signal model here) and for our existing analysis, we'll use (insert existing analysis here).
+
+If you still have time after these activities, there will be an advanced section at the end of the tutorial that has additional information on how a new analysis can be preserved for RECAST.
 
 ### Plausible and Likely Scenario
 
@@ -30,7 +37,7 @@ Years later, other physicists may dream up new theories leading to alternative m
 This is where RECAST comes in! RECAST, [initially developed during Run1 of the LHC](https://link.springer.com/article/10.1007%2FJHEP04%282011%29038) is a part of a broader effort called [REANA](http://www.reanahub.io/) which aims to improve the reproducibility of particle physics data analysis.  These efforts are all part of a broader effort of [analysis preservation](https://www.nature.com/articles/s41567-018-0342-2) ongoing at CERN.  RECAST in particular, the tool you will be learning about here, automates the process of passing a new signal model through an analysis at the time that the analysis is being developed. The idea is that the analysis can then be trivially reused at any time in the future to re-interpret new signal models in the phase space that it so painstakingly revealed.
 
 > ## RECAST in Action
-> All this RECAST business may seem like a thing of the future in ATLAS, and up until recently it sort of was. But, as of last week, it is officially a thing of the **now**! The mono-Hbb dark matter search, which looks for dark matter production in association with a Higgs boson decaying to a pair of b-quarks (not so different from our VHbb signal actually...) was recently re-interpreted ([link to paper](https://cds.cern.ch/record/2686290)) in the context of replacing the standard model Higgs decay with a dark sector Higgs decaying to two b-quarks. This re-interpretation was done using the RECAST framework set up by the mono-Hbb analysis!
+> The mono-Hbb dark matter search that we're analyzing was formally reinterpreted by ATLAS ([link to paper](https://cds.cern.ch/record/2686290)).
 > <img src="../fig/recast_doodle.png" alt="MonoHbb Reinterpretation" style="width:500px">
 > <img src="../fig/monosbb_exclusion.png" alt="MonoSbb Exclusion" style="width:375px">
 {: .callout}
