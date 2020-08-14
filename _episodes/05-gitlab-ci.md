@@ -14,17 +14,17 @@ keypoints:
 ---
 
 ## Introduction
-Now that we've deconstructed the `atlas/analysisbase` image that you've been using for your analysis to see where it actually comes from, we're going to take the next step of using this image as a base for preserving our ATLAS environment. Gitlab CI/CD automates the task of keeping your analysis environment up-to-date so you don't have to think about it (much). This is accomplished by re-building the container in which your analysis environment is preserved on top of `atlas/analysisbase` for each analysis repo, each time that new commits are pushed to the repos. 
+Next, we're going to use the `atlas/analysisbase` image as a base for *preserving* our ATLAS environment. Gitlab CI/CD automates the task of keeping the analysis environment up-to-date so you don't have to think about it (much). This is accomplished by re-building the container in which the analysis environment is preserved on top of `atlas/analysisbase` for each analysis repo, each time that new commits are pushed to the repos. 
 
 
 ## RECAST and Gitlab CI/CD
 
-So how is this automated container re-building actually accomplished? As you've already learned, each time that an analyst pushes new commits to the docker repo with gitlab CI/CD set up, gitlab starts a pipeline that runs the tests you wrote in your `.gitlab-ci.yml` file to validate the new commits. In addition to these code tests, it's also possible to add code to the `.gitlab-ci.yml` file to build a container in which the analysis code and environment reside, and store it in the "gitlab registry". But to build this container correctly, you first need some specific instructions on:
+So how is this automated container re-building actually accomplished? Each time that an analyst pushes new commits to the docker repo with gitlab CI/CD set up, gitlab starts a pipeline that runs the tests you wrote in your `.gitlab-ci.yml` file to validate the new commits. In addition to these code tests, it's also possible to add code to the `.gitlab-ci.yml` file to build a container in which the analysis code and environment reside, and store it in the "gitlab registry". But to build this container correctly, you need to know:
  * how to set up the exact environment in the container that your code depends on,
  * how to add your analysis code to the container, and 
- * how to pre-build the code so that it can just be run trivially inside the container (ideally with only a single command).
+ * how to pre-build the code so that it can be run inside the container (ideally with only a single command).
 
-These all sound like tasks that a Dockerfile would be great for! And indeed, the first key component of automated environment preservation with gitlab CI/CD is to add a Dockerfile to the repo with these specifications.  
+These all sound like tasks that a Dockerfile would be great for! And indeed, the first step of automated environment preservation with gitlab CI/CD is to add a Dockerfile to the repo.
 
 > ## `atlas` User in ATLAS Containers
 > By default, files added to a docker container will be owned by root user. However, it's considered good practice to avoid actually working as root user unnecessarily since this minimizes the risk of accidentally misusing root privileges, so the `analysisbase` images use a non-root `atlas` user by default. 
@@ -34,11 +34,11 @@ These all sound like tasks that a Dockerfile would be great for! And indeed, the
 
 ### Writing your Gitlab Dockerfile
 
-So far, you've been starting your containers from the `atlas/analysisbase:21.2.85-centos7` base image, volume-mounting your analysis code, and building the code manually, maybe with the help of some aliases and shell scripts. Now we're going to write a Dockerfile that automatically adds your code to the container and builds it, then bundles all this into a new container that's ready to run your code!
+So far, you've been starting your containers from the `atlas/analysisbase:21.2.125` base image, volume-mounting your analysis code, and building the code manually, maybe with the help of some aliases and shell scripts. Now we're going to write a Dockerfile that automatically adds your code to the container and builds it, then bundles all this into a new container that's ready to run your code!
 
 
 > ## Exercise (10 min)
-> Working from your shell (i.e. **not** from inside the `atlas/analysisbase:21.2.85-centos7` container), cd into the top level of your gitlab repo for the VHbb analysis. Create an empty file named Dockerfile
+> Working from your shell (i.e. **not** from inside the `atlas/analysisbase:21.2.125` container), cd into the top level of your gitlab repo for the VHbb analysis. Create an empty file named Dockerfile
 >
 > ~~~
 > touch Dockerfile
@@ -49,7 +49,7 @@ So far, you've been starting your containers from the `atlas/analysisbase:21.2.8
 > 
 > ~~~
 > # Specify the image and release tag from which we're working
-> atlas/analysisbase:21.2.85-centos7
+> FROM atlas/analysisbase:21.2.125
 > 
 > # Put the current repo (the one in which this Dockerfile resides) in the /Bootcamp directory
 > # Note that this directory is created on the fly and does not need to reside in the repo already
@@ -74,7 +74,7 @@ So far, you've been starting your containers from the `atlas/analysisbase:21.2.8
 > > ## Solution
 > > ~~~
 > > # Specify the image from which you are working
-> > FROM atlas/analysisbase:21.2.85-centos7
+> > FROM atlas/analysisbase:21.2.125
 > > 
 > > # Put the current repo (the one in which this Dockerfile resides) in the directory specified here
 > > # Note that this directory is created on the fly and does not need to reside in the repo already
@@ -108,9 +108,16 @@ So far, you've been starting your containers from the `atlas/analysisbase:21.2.8
 > ~~~
 > {: .source}
 > 
-> When your container builds successfully, you can `exec` into it and poke around to make sure it's set up exactly as you want, and that you can successfully run the executable you built:
+> When your image builds successfully, you can start a new container and poke around to make sure it's set up exactly as you want, and that you can successfully run the executable you built:
 > ~~~
-> docker run -it --rm vhbb_test bash
+> docker run -it --rm -v /path/to/local/DAOD/file:/data vhbb_test bash
+> ~~~
+> {: .source}
+> Once you are inside the container:
+> ~~~
+> source ~/release-setup.sh
+> source x86_64-centos7-gcc8-opt/setup.sh 
+> ./x86_64-centos7-gcc8-opt/bin/AnalysisPayload /data/DAOD_EXOT27.17882744._000026.pool.root.1
 > ~~~
 > {: .source}
 {: .callout}
@@ -121,7 +128,7 @@ So far, you've been starting your containers from the `atlas/analysisbase:21.2.8
 > * If new functionality has been added to the code, any corresponding new executable(s) are being properly built.
 {: .callout}
 
-Now, you can proceed with updating your `.gitlab-ci.yml` to actually build the container during the CI/CD pipeline and store it in the gitlab registry. You can later pull it from the gitlab registry just as you would any other container, but in this case using your CERN credentials. 
+Now, you can proceed with updating your `.gitlab-ci.yml` to actually build the image during the CI/CD pipeline and store it in the gitlab registry. You can later pull it from the gitlab registry just as you would any other image, but in this case using your CERN credentials. 
 
 
 Add the following lines at the end of the `.gitlab-ci.yml` file to build the image and save it to the docker registry. 

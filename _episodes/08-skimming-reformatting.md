@@ -44,7 +44,7 @@ cp /path/to/DAOD_EXOT27.17882744._000026.pool.root.1 inputdata/recast_daod.root
 {: .source}
 
 > ## Providing files to yadage
-> Since we have a signal DAOD file for yadage to process, we'll need a way to tell the yadage-run command where to look for the DOAD file. This functionality is provided by the `-d initdir=` option. For example, if the file to input is named `inputfile.txt`, and it's located in the directory `inputdata` syntax for passing it to yadage-run as the variable inputfile would be:
+> Since we have a signal DAOD file for yadage to process, we'll need a way to tell the yadage-run command where to look for the DAOD file. This functionality is provided by the `-d initdir=` option. For example, if the file to input is named `inputfile.txt`, and it's located in the directory `inputdata` syntax for passing it to yadage-run as the variable inputfile would be:
 > 
 > ~~~
 > yadage-run workdir workflow.yml -p inputfile=inputfile.txt -d initdir=$PWD/inputdata
@@ -187,12 +187,12 @@ You can try setting up the container for this step yourself in the following exe
 > touch ReformatHist.cxx
 > ~~~
 > {: .source}
-> cd up the main repo and, if you haven't already, run a container from the `atlas/analysisbase:21.2.85-centos7` image, volume-mounting the whole analysis repo into the container.
+> cd up the main repo and, if you haven't already, run a container from the `atlas/analysisbase:21.2.125` image, volume-mounting the whole analysis repo into the container.
 >
 > ~~~
 > cd ../..
 > docker run --rm -it -w /home/atlas/Bootcamp -v \
-> $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.85-centos7 \
+> $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.125 \
 > bash -c 'cp -r ssh-credentials ~/.ssh; cp gitconfig ~/.gitconfig ; bash'
 > ~~~
 > {: .source}
@@ -305,7 +305,7 @@ You can try setting up the container for this step yourself in the following exe
 {: .challenge}
 
 > ## Bonus Exercise!
-> The task we accomplished above in pure ROOT could also be accomplished with a fair bit less coding by making use of python's uproot or rootpy+root_numpy packages. Since the amount of data encoded in the histograms is very small compared with the original DAOD, any speed losses we may suffer in going from pure ROOT code to python for this step are essentially negligible. As such, this is a situation in which it may well be to our benefit to take advantage of high level python modules. The main downside in our particular case is that `atlas/analysisbase:21.2.85-centos7` doesn't have a ROOT installation with python bindings (needed for rootpy+root_numpy) or python 3.6 (needed for uproot), so it's best to build or own docker images for this task. 
+> The task we accomplished above in pure ROOT could also be accomplished with a fair bit less coding by making use of python's uproot or rootpy+root_numpy packages. Since the amount of data encoded in the histograms is very small compared with the original DAOD, any speed losses we may suffer in going from pure ROOT code to python for this step are essentially negligible. As such, this is a situation in which it may well be to our benefit to take advantage of high level python modules. The main downside in our particular case is that `atlas/analysisbase:21.2.125` doesn't have a ROOT installation with python bindings (needed for rootpy+root_numpy) or python 3.6 (needed for uproot), so it's best to build or own docker images for this task. 
 > 
 > we provide "starter" repos for . You can choose to work with one of them depending on your desired implementation. 
 >

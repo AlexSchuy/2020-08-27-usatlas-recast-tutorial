@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Using recast-cli"
 teaching: 20
 exercises: 0
 questions:
