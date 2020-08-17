@@ -13,6 +13,6 @@ docker pull cern/slc6-base:latest`
   * register it with VOMS,
   * convert it to a .pem file, and
   * upload it to lxplus.
-This may take some time if it is your first time, but it is time well spenty.
+This may take some time if it is your first time, but it is time well spent.
 
 {% include links.md %}

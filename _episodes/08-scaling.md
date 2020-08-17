@@ -19,7 +19,7 @@ The final step of our analysis workflow is to make a statistical comparison of t
 <!--Our goal is to determine whether we can detect any signicant evidence for our signal in the data or, if not, what signal cross sections the data can exclude.-->
 
 
-The interpretation step will receive the `h_mjj_kin_cal` histogram that we converted to text file format in the previous step and perform the statistical comparison with some simulated background and data. The fitting will be done with [pyhf](https://diana-hep.org/pyhf/), a specialized fitting module designed for HEP applications and written in pure python (i.e. no ROOT dependencies). We won't dig into the actual details of the `pyhf` implementation during this tutorial, but if you're interested in learning more, check out the "Fitting Fun with pyhf" module on Friday!
+The interpretation step will receive the `h_mjj_kin_cal` histogram that we converted to text file format in the previous step and perform the statistical comparison with some simulated background and data. The fitting will be done with [pyhf](https://diana-hep.org/pyhf/), a specialized fitting module designed for HEP applications and written in pure python (i.e. no ROOT dependencies). We won't dig into the actual details of the `pyhf` implementation during this tutorial, but if you're interested in learning more, there are many resources online.
 
 
 ## Scaling the Signal Histogram
@@ -103,7 +103,7 @@ The next exercise will guide you through implementing the MC event weighting.
 > > {: .source}
 > >
 > > #### Part 3
-> > The only adaptation that should be needed in the python script is to replace `files = [os.environ['ASG_TEST_FILE_MC']]` (line 4) with the path to your DAOD, eg. `files = "/Data/DAOD_EXOT27.17882744._000026.pool.root.1"`. Then, you could run the script as follows, starting from the top level of your analysis repo (assuming the script is in `python/ GetSumOfWeights.py` and the DAOD is in `Data/llbb_VpT/DAOD_EXOT27.17882744._000026.pool.root.1`):
+> > The only adaptation that should be needed in the python script is to replace `files = [os.environ['ASG_TEST_FILE_MC']]` (line 4) with the path to your DAOD, eg. `files = "/Data/DAOD_EXOT27.17882744._000026.pool.root.1"`. Then, you could run the script as follows, starting from the top level of your analysis repo (assuming the script is in `python/GetSumOfWeights.py` and the DAOD is in `Data/llbb_VpT/DAOD_EXOT27.17882744._000026.pool.root.1`):
 > > ~~~
 > > docker run --rm -it -v $PWD/Data/llbb_VpT:/Data -v $PWD/python:/python atlas/analysisbase:21.2.125 bash
 > > python /python/GetSumOfWeights.py
@@ -136,7 +136,7 @@ Now that the events in our histogram are properly weighted, we can proceed with 
 
 #### Cross Section and Filter Factor
 
-If the MC generator indiscriminately produced the full range of events for a given process, this would just require scaling the histogram for each MC sample by the predicted production cross section &sigma; after dividing by the sum of event weights. In practice though, generators will sometimes apply filters during event generation to focus on producing events that will be of interest for physics analyses. In this case, the generator needs to provide a "filter efficiency" (set to 1 b default) that represents the expected fraction of events that make it past these filters and into the MC samples.
+If the MC generator indiscriminately produced the full range of events for a given process, this would just require scaling the histogram for each MC sample by the predicted production cross section &sigma; after dividing by the sum of event weights. In practice though, generators will sometimes apply filters during event generation to focus on producing events that will be of interest for physics analyses. In this case, the generator needs to provide a "filter efficiency" (set to 1 by default) that represents the expected fraction of events that make it past these filters and into the MC samples.
 
 #### k-factor
 
@@ -149,7 +149,7 @@ So in general, we scale MC histograms by the product of their cross section, fil
 > Obtain the cross section, filter efficiency, and k-factor for our signal sample
 > `mc16_13TeV.345055.PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llbb_VpT.deriv.DAOD_EXOT27.e5706_s3126_r10724_p3840`.
 > To complete this exercise, you'll need to have a valid grid certificate on your browser, have registered it with VOMS,
-> and uploaded to your home directory on lxplus (see details in [Setup section](https://danikam.github.io/2019-08-19-usatlas-recast-tutorial/setup.html)).
+> and uploaded to your home directory on lxplus (see details in [Setup section](https://alexschuy.github.io/2020-08-27-usatlas-recast-tutorial/setup.html)).
 >
 > #### Part 1: AMI Website
 > First, we'll try getting the information from the AMI website.
@@ -164,7 +164,7 @@ So in general, we scale MC histograms by the product of their cross section, fil
 >
 > **k-factors** : You may notice that the "k-factor" is not listed here.  And that is fine. The k-factor, short for **knowledge**-factor,
 > and something that is conventionally representative of the multiplicative scale factor that transforms an inclusive
-> cross section from leading order (LO) to next to leading order (NLO) is something that is typically handled "offline"
+> cross section from leading order (LO) to next to leading order (NLO) is typically handled "offline"
 > in ATLAS and is often-times group specific.  For the purposes here, we will just be using the cross section that *is*
 > available in AMI.  However, when you jump into a real analysis, be sure to understand whether the numbers stored in
 > AMI are really the ones you "should" be using or whether you need to use some k-factors.

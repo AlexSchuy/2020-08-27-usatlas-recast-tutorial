@@ -31,7 +31,7 @@ In a real analysis, a proper comparison with the data would require accounting f
 
 
 #### What are we actually going to do?
-However, the time it would take us to properly account for all the SM backgrounds would probably take away from the main purpose of this "docker in ATLAS" tutorial. So we'll instead assume that our SM background distribution can be modeled analytically by some smoothly decaying exponential in the dijet invariant mass, and move along (keeping in mind that this would in no way fly in a real analysis!). We'll also provide some toy data for the interpretation. The fit will be done using a python fitting framework called [pyhf](https://diana-hep.org/pyhf/).
+However, the time it would take us to properly account for all the SM backgrounds would probably take away from the main purpose of this tutorial. So we'll instead assume that our SM background distribution can be modeled analytically by some smoothly decaying exponential in the dijet invariant mass, and move along (keeping in mind that this would in no way fly in a real analysis!). We'll also provide some toy data for the interpretation. The fit will be done using a python fitting framework called [pyhf](https://diana-hep.org/pyhf/).
 
 
 This approach is illustrated in the following doodle, where some data is fit with the background plus signal, with the signal amplitude (linearly proportional to the cross section) allowed to vary. The fit shows that the data is best represented with a signal component, where the signal cross section is 1/5th of its simulated value. Note that the signal in this doodle is **not** meant to represent our particular VHbb signal - it's just drawn from a Gaussian distribution for illustration.
@@ -102,7 +102,7 @@ These steps are summarized in the following illustration:
 
 ## Workflow
 
-The workflow description specifies how all the steps "fit together". It accomplishes this by specifying exactly where all the data to be input to each step comes from - whether it be user-provided (i.e. "init" data) or output from a previous step - and how each step will be executed.
+The workflow description specifies how all the steps fit together. It accomplishes this by specifying where the inputs to each step come from -- whether they are user-provided (i.e. "init" data) or output from a previous step -- and how each step will be executed.
 
 So here is an idea of what our workflow should look like:
 

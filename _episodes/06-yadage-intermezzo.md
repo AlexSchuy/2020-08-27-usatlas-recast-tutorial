@@ -16,7 +16,7 @@ keypoints:
 
 ## Introduction
 
-In this *intermezzo*, we'll take our first step into the forest of workflow authoring by walking through a simple helloworld example that illustrates the yadage syntax involved. The original example, written by Lukas Heinrich, is available here: [Getting Started Tutorial](https://yadage.github.io/tutorial/GettingStarted.html). Once you've mastered this basic workflow, it should be relatively straightforward to extend it to more complex workflows. 
+In this *intermezzo*, we'll take our first step of workflow authoring by walking through a simple helloworld example that illustrates the yadage syntax involved. The original example, written by Lukas Heinrich, is available here: [Getting Started Tutorial](https://yadage.github.io/tutorial/GettingStarted.html). Once you've mastered this basic workflow, it should be relatively straightforward to extend it to more complex workflows. 
 
 > ## High-level `recast-atlas` Tool 
 > In this tutorial, we focus on developing skills for encoding your workflow with yadage syntax, and use yadage commands directly to test and run the workflow. Lukas Heinrich has also written a really nice high-level wrapper for running yadage called [recast-atlas](https://github.com/recast-hep/recast-atlas) to help facilitate running the workflow, with the ability to encode unit tests and different run configurations in the `recast.yml` steering file. See [this recast tutorial](https://recast-docs.web.cern.ch/recast-docs/) for instructions and examples for developing your workflow with this `recast-atlas` tool!
@@ -24,7 +24,7 @@ In this *intermezzo*, we'll take our first step into the forest of workflow auth
 
 ### Yadage setup
 
-Yadage is available as both a [pip package](https://pypi.org/project/yadage/) and a [docker container image](https://hub.docker.com/r/yadage/yadage) with yadage pre-installed. To avoid any need to download pip, yadage and its dependencies onto our computers - and since we're already in a container groove! - let's run with the container. 
+Yadage is available as both a [pip package](https://pypi.org/project/yadage/) and a [docker container image](https://hub.docker.com/r/yadage/yadage) with yadage pre-installed. To avoid any difficulties with installation, let's run with the container. 
 
 First, pull the container from docker hub:
 ~~~

@@ -20,7 +20,7 @@ We now have all the yadage tools to put together our VHbb RECAST workflow, start
 
 <img src="../fig/SkimmingStep.png" alt="Skimming" style="width:220px">
 
-On gitlab, create a new repo to contain your workflow. Name it something like `danika-workflow` (but with your name instead of mine). Clone your new repo onto your computer.
+On gitlab, create a new repo to contain your workflow. Name it something like `{name}-workflow`. Clone your new repo onto your computer.
 
 
 **In another shell**, cd into the workflow repo and start the yadage container so you can validate and test the steps and workflow as you develop. You'll also need to log in to the gitlab docker registry using your CERN credentials so yadage can automatically pull images from the gitlab registry:
@@ -307,7 +307,7 @@ You can try setting up the container for this step yourself in the following exe
 > ## Bonus Exercise!
 > The task we accomplished above in pure ROOT could also be accomplished with a fair bit less coding by making use of python's uproot or rootpy+root_numpy packages. Since the amount of data encoded in the histograms is very small compared with the original DAOD, any speed losses we may suffer in going from pure ROOT code to python for this step are essentially negligible. As such, this is a situation in which it may well be to our benefit to take advantage of high level python modules. The main downside in our particular case is that `atlas/analysisbase:21.2.125` doesn't have a ROOT installation with python bindings (needed for rootpy+root_numpy) or python 3.6 (needed for uproot), so it's best to build or own docker images for this task. 
 > 
-> we provide "starter" repos for . You can choose to work with one of them depending on your desired implementation. 
+> we provide "starter" repos for both uproot and rootpy. You can choose to work with one of them depending on your desired implementation. 
 >
 > Each repo includes:
 > * a Dockerfile which specifies the base image and installs any required dependencies (feel free to add more dependencies if you need to!), 
