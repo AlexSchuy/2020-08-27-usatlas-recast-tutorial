@@ -101,7 +101,7 @@ cp /path/to/DAOD_EXOT27.17882744._000026.pool.root.1 inputdata/recast_daod.root
 > >     process_type: interpolated-script-cmd
 > >     script: |
 > >       # Run the AnalysisPayload executable to produce the output ROOT file, looping over **all** events. 
-> >       source /home/atlas/release_setup.sh
+> >       source /release_setup.sh
 > >       source /Bootcamp/build/x86_64-centos7-gcc8-opt/setup.sh
 > > 	  cd /Bootcamp/run
 > >       AnalysisPayload {input_file} {output_file}
