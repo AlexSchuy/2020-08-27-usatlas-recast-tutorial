@@ -126,7 +126,7 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > ~~~
 > source ~/release-setup.sh
 > source x86_64-centos7-gcc8-opt/setup.sh 
-> ./x86_64-centos7-gcc8-opt/bin/AnalysisPayload /data/DAOD_EXOT27.17882744._000026.pool.root.1
+> AnalysisPayload /data/DAOD_EXOT27.17882744._000026.pool.root.1
 > ~~~
 > {: .source}
 {: .callout}
