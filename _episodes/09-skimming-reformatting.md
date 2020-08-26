@@ -84,13 +84,13 @@ cp /path/to/DAOD_EXOT27.17882744._000026.pool.root.1 inputdata/recast_daod.root
 > ~~~
 > stages:
 > - name: skimming_step
->  dependencies: [FIXME]
->  scheduler:
->    scheduler_type: singlestep-stage
->    parameters:
-      input_file: {[FIXME], output: signal_daod}
-      [FIXME]: '{workdir}/selected.root'
-    step: [FIXME]
+>   dependencies: [FIXME]
+>   scheduler:
+>     scheduler_type: singlestep-stage
+>     parameters:
+>       input_file: {[FIXME], output: signal_daod}
+>       [FIXME]: '{workdir}/selected.root'
+>   step: [FIXME]
 > ~~~
 > {: .source}
 > > ## Solution
@@ -101,9 +101,9 @@ cp /path/to/DAOD_EXOT27.17882744._000026.pool.root.1 inputdata/recast_daod.root
 > >     process_type: interpolated-script-cmd
 > >     script: |
 > >       # Run the AnalysisPayload executable to produce the output ROOT file, looping over **all** events. 
-> >       source /home/atlas/release_setup.sh
+> >       source /release_setup.sh
 > >       source /Bootcamp/build/x86_64-centos7-gcc8-opt/setup.sh
-> > 	  cd /Bootcamp/run
+> > 	    cd /Bootcamp/run
 > >       AnalysisPayload {input_file} {output_file}
 > >   environment:
 > >     environment_type: docker-encapsulated
@@ -190,7 +190,7 @@ You can try setting up the container for this step yourself in the following exe
 > cd up the main repo and, if you haven't already, run a container from the `atlas/analysisbase:21.2.125` image, volume-mounting the whole analysis repo into the container.
 >
 > ~~~
-> cd ../..
+> cd ../../../..
 > docker run --rm -it -w /home/atlas/Bootcamp -v \
 > $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.125 \
 > bash -c 'cp -r ssh-credentials ~/.ssh; cp gitconfig ~/.gitconfig ; bash'
@@ -332,7 +332,7 @@ reformatting_step:
   process:
     process_type: interpolated-script-cmd
     script: |
-      source ~/release_setup.sh		# NOTE: This command shouldn't be needed if you're using an image you produced in the bonus "python-implementation" exercise!
+      source /release_setup.sh		# NOTE: This command shouldn't be needed if you're using an image you produced in the bonus "python-implementation" exercise!
       source /Bootcamp/build/x86_64-centos7-gcc8-opt/setup.sh
       cd /Bootcamp/run
       ReformatHist {hist_root} {hist_txt}     # Change the exact run command if your executable has a different name or location

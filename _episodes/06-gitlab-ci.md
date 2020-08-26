@@ -61,6 +61,9 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > # Go into the /Bootcamp/build directory and make /Bootcamp/build the default working directory (again, it will create the directory if it doesn't already exist)
 > [FIXME]
 >
+> # Make sure we're starting from a fresh build dir
+> RUN sudo rm -rf /Bootcamp/build/
+>
 > # Create a run directory
 > RUN [FIXME]
 > 
@@ -86,8 +89,11 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > > # Go into the directory specified here (again, it will create the directory if it doesn't already exist)
 > > WORKDIR /Bootcamp/build
 > >
+> > # Make sure we're starting from a fresh build dir
+> > RUN sudo rm -rf /Bootcamp/build/*
+> >
 > > # Create a run directory
-> > RUN sudo mkdir /Bootcamp/run
+> > RUN sudo mkdir -p /Bootcamp/run
 > > 
 > > # Source the ATLAS analysis environment
 > > # Make sure the directory containing your analysis code (and the code inside it) is owned by atlas user
@@ -118,9 +124,9 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > {: .source}
 > Once you are inside the container:
 > ~~~
-> source ~/release-setup.sh
+> source /release-setup.sh
 > source x86_64-centos7-gcc8-opt/setup.sh 
-> ./x86_64-centos7-gcc8-opt/bin/AnalysisPayload /data/DAOD_EXOT27.17882744._000026.pool.root.1
+> AnalysisPayload /data/DAOD_EXOT27.17882744._000026.pool.root.1
 > ~~~
 > {: .source}
 {: .callout}
