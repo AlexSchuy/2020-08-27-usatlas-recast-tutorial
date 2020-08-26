@@ -89,8 +89,11 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > > # Go into the directory specified here (again, it will create the directory if it doesn't already exist)
 > > WORKDIR /Bootcamp/build
 > >
+> > # Make sure we're starting from a fresh build dir
+> > RUN sudo rm -rf /Bootcamp/build/*
+> >
 > > # Create a run directory
-> > RUN sudo mkdir /Bootcamp/run
+> > RUN sudo mkdir -p /Bootcamp/run
 > > 
 > > # Source the ATLAS analysis environment
 > > # Make sure the directory containing your analysis code (and the code inside it) is owned by atlas user
