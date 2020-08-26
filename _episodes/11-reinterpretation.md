@@ -118,8 +118,7 @@ and the corresponding workflow step to your workflow.yml:
 This step can be tested with the following `packtivity_run` command which incorporates all the scaling factors we've obtained:
 
 ~~~
-packtivity-run -p signal="'{workdir}/workdir/reformatting_step/selected.txt'" -p xsection=44.837 -p sumweights=6813.025800 -p kfactor=1.
-0 -p filterfactor=1.0 -p luminosity=140.1 -p plot_png="'{workdir}/hists.png'" -p fit_result="'{workdir}/limit.png'" steps.yml#/interpretation_step
+packtivity-run -p signal="'{workdir}/workdir/reformatting_step/selected.txt'" -p xsection=44.837 -p sumweights=6813.025800 -p kfactor=1.0 -p filterfactor=1.0 -p luminosity=140.1 -p plot_png="'{workdir}/hists.png'" -p fit_result="'{workdir}/limit.png'" steps.yml#/interpretation_step
 ~~~
 {: .source}
 
