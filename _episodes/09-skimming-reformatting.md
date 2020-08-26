@@ -84,13 +84,13 @@ cp /path/to/DAOD_EXOT27.17882744._000026.pool.root.1 inputdata/recast_daod.root
 > ~~~
 > stages:
 > - name: skimming_step
->  dependencies: [FIXME]
->  scheduler:
->    scheduler_type: singlestep-stage
->    parameters:
-      input_file: {[FIXME], output: signal_daod}
-      [FIXME]: '{workdir}/selected.root'
-    step: [FIXME]
+>   dependencies: [FIXME]
+>   scheduler:
+>     scheduler_type: singlestep-stage
+>     parameters:
+>       input_file: {[FIXME], output: signal_daod}
+>       [FIXME]: '{workdir}/selected.root'
+>   step: [FIXME]
 > ~~~
 > {: .source}
 > > ## Solution
