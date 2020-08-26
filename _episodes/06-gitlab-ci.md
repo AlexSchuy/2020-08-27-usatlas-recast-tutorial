@@ -61,6 +61,9 @@ So far, you've been starting your containers from the `atlasamglab/bootcamp-2020
 > # Go into the /Bootcamp/build directory and make /Bootcamp/build the default working directory (again, it will create the directory if it doesn't already exist)
 > [FIXME]
 >
+> # Make sure we're starting from a fresh build dir
+> RUN sudo rm -rf /Bootcamp/build/
+>
 > # Create a run directory
 > RUN [FIXME]
 > 
