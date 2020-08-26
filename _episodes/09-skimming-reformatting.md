@@ -332,7 +332,7 @@ reformatting_step:
   process:
     process_type: interpolated-script-cmd
     script: |
-      source ~/release_setup.sh		# NOTE: This command shouldn't be needed if you're using an image you produced in the bonus "python-implementation" exercise!
+      source /release_setup.sh		# NOTE: This command shouldn't be needed if you're using an image you produced in the bonus "python-implementation" exercise!
       source /Bootcamp/build/x86_64-centos7-gcc8-opt/setup.sh
       cd /Bootcamp/run
       ReformatHist {hist_root} {hist_txt}     # Change the exact run command if your executable has a different name or location
