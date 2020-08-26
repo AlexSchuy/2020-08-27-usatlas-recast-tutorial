@@ -190,7 +190,7 @@ You can try setting up the container for this step yourself in the following exe
 > cd up the main repo and, if you haven't already, run a container from the `atlas/analysisbase:21.2.125` image, volume-mounting the whole analysis repo into the container.
 >
 > ~~~
-> cd ../..
+> cd ../../..
 > docker run --rm -it -w /home/atlas/Bootcamp -v \
 > $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.125 \
 > bash -c 'cp -r ssh-credentials ~/.ssh; cp gitconfig ~/.gitconfig ; bash'
