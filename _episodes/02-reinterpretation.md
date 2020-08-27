@@ -1,6 +1,7 @@
 ---
 title: "Reinterpretation"
-teaching: 5
+teaching: 0
+exercises: 0
 ---
 
 ## Reinterpretation

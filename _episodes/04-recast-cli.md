@@ -1,7 +1,7 @@
 ---
 title: "Using recast-cli"
-teaching: 20
-exercises: 0
+teaching: 10
+exercises: 30
 questions:
 - "What kind of input does `recast-cli` use?"
 - "What output can I expect from `recast-cli`?"
@@ -22,11 +22,6 @@ So, if it's less accurate, why should we use it? The primary use-case for `recas
 > The principal motivation for `recast-cli` is the use of fast simulation. Fast simulation uses kinematic smearing or other techniques to simulate detector effects, rather than going through a full geant-4 emulation (see [rivet](https://arxiv.org/abs/1910.01637) for more details).
 {: .callout}
 
-## Example
-### Analysis
-TODO: Add description of [analysis](https://arxiv.org/abs/1605.03814)
-### Model
-TODO: Add description of [model](http://feynrules.irmp.ucl.ac.be/wiki/DMsimp)
 
 ## Installation
 
@@ -114,10 +109,6 @@ ATLAS_13_METJET
 0.97852174284
 /ATLAS_2016_I1458270/2jm
 ~~~
-
-> ## Bonus Exercise!
-> `recast-cli` can also automate a scan over a grid. TODO: add instructions for scan.
-{: .challenge}
 
 {% include links.md %}
 

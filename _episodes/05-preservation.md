@@ -1,6 +1,7 @@
 ---
 title: "Preservation"
-teaching: 5
+teaching: 0
+exercises: 0
 ---
 
 ## Preservation
