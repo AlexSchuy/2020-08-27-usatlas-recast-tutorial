@@ -50,7 +50,7 @@ For the mono-Sbb re-interpretation, a new dark Higgs signal model was used. In a
 The model has four free parameters: the mass of the particles _m_<sub>_χ_</sub>, _m_<sub>_Z'_</sub>, _m_<sub>_s_</sub> and the coupling _g_<sub>_χ_</sub>. In this re-interpretation, _g_<sub>_χ_</sub>=1 (as was done in the Z’-2HDM model) and _m_<sub>_χ_</sub>=200 GeV. Then, the signal grid is given by _m_<sub>_Z'_</sub>∈[500, 3000] GeV in steps of 500 GeV and _m_<sub>_s_</sub>∈[50, 110] GeV in steps of 20 GeV, resulting in a total of 24 points.
 
 ## Running
-There are two ways to run `recast-atlas`: locally or on lxplus.
+There are two ways to run `recast-atlas`: locally (good for testing) or on lxplus (good for actual re-interpretations).
 > ### Local
 > To install `recast-atlas` locally, first setup a python virtual environment in whatever manner you prefer (conda, venv, etc.). Then, within that environment run:
 ~~~
@@ -82,7 +82,6 @@ For the selection stages, we need (both for mc16a and mc16d):
 
 For the fitting stage we need:
 * Theory uncertainties for our signal.
-* Limits for the backgrounds (usually, you shouldn't need to specify this).
 
 `recast-atlas` expects a yaml file that specifies the inputs for a re-interpretation (more on this when we preserve our own analysis). For the mono-s(bb) re-interpretation, these are stored in the [mono-sbb-config](https://gitlab.cern.ch/recast-monosbb/mono-sbb-config) repository. Note that there is one file for each point in phase space.
 
