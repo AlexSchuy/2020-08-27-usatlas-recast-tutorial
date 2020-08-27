@@ -26,9 +26,9 @@ So, if it's less accurate, why should we use it? The primary use-case for `recas
 ## Installation
 
 ### Using docker
-A recast-cli docker image for this tutorial is available on docker hub at: `insert-image-here`. Simply run:
+A recast-cli docker image for this tutorial is available on docker hub at: https://hub.docker.com/r/recast/workflow. Simply run:
 ~~~
-docker run --rm -it replace/me/with/image:tag bash
+docker run --rm -it recast/workflow:latest bash
 ~~~
 
 ### Using pip
